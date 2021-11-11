@@ -1,8 +1,17 @@
 module.exports = {
   purge: ["./pages/**/*.{js,ts,jsx,tsx}", "./components/**/*.{js,ts,jsx,tsx}"],
-  darkMode: false, // or 'media' or 'class'
+  darkMode: "class", // or 'media' or 'class'
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        mono: ["DM Mono", "monospace"],
+      },
+      colors: {
+        wgreen: "#00FF66",
+        wpurple: "#5A32E9",
+        wred: "#ED3232",
+      },
+    },
   },
   variants: {
     extend: {},
