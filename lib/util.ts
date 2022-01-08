@@ -21,3 +21,33 @@ export const useScrolled = () => {
 
   return scrolled;
 };
+
+export const useScrollY = () => {
+  const [scrollTop, setScrollTop] = useState(0);
+
+  useEffect(() => {
+    const onScroll = (e: any) => {
+      setScrollTop(e.target.documentElement.scrollTop);
+    };
+    window.addEventListener("scroll", onScroll);
+
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  return scrollTop;
+};
+
+export const useViewportHeight = () => {
+  const [canvasHeight, setCanvasHeight] = useState(0);
+
+  useEffect(() => {
+    const resizeCanvas = () => {
+      setCanvasHeight(window.innerHeight);
+    };
+    window.addEventListener("resize", resizeCanvas);
+    resizeCanvas();
+    return () => window.removeEventListener("resize", resizeCanvas);
+  }, []);
+
+  return canvasHeight;
+};

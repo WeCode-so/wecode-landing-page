@@ -9,6 +9,7 @@ module.exports = {
       colors: {
         wgreen: "#00FF66",
         wpurple: "#5A32E9",
+        wpurpledarker: "#3D15CB",
         wred: "#ED3232",
       },
     },

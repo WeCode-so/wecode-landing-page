@@ -2,18 +2,22 @@ import React from "react";
 import { useScrolled } from "../lib/util";
 import Image from "next/image";
 import Link from "next/link";
-import logo from "../public/wecode_1x.png";
+import logo from "../public/wecode.png";
 import instagram from "../public/instagram.svg";
 import purpleBall from "../public/big_purple_ball.png";
 import { useRouter } from "next/dist/client/router";
 
-const CommonLayout: React.FC<React.PropsWithChildren<{}>> = ({ children }) => {
+const CommonLayout: React.FC<
+  React.PropsWithChildren<{ noCircle?: boolean }>
+> = ({ children, noCircle }) => {
   return (
     <div className="relative">
       <Header />
-      <div className="absolute top-0 right-0" style={{ zIndex: -1 }}>
-        <Image src={purpleBall} alt="WeCode" quality={100} />
-      </div>
+      {!noCircle && (
+        <div className="absolute top-0 right-0" style={{ zIndex: -1 }}>
+          <Image src={purpleBall} alt="WeCode" quality={100} />
+        </div>
+      )}
       {children}
       <Footer />
     </div>
@@ -53,7 +57,7 @@ const Header: React.FC<{}> = ({}) => {
       <div className="container mx-auto flex flex-row items-center h-full">
         <Link href="/">
           <a>
-            <Image src={logo} alt="WeCode" />
+            <Image src={logo} alt="WeCode" height={36} width={134} />
           </a>
         </Link>
         <div className="flex-1" />
@@ -62,7 +66,7 @@ const Header: React.FC<{}> = ({}) => {
             <Link key={l.href} href={l.href}>
               <a
                 className={
-                  "font-medium " +
+                  "font-medium hover:text-wgreen " +
                   (l.href === pathname ? "text-wgreen" : "text-white")
                 }
               >
@@ -71,7 +75,9 @@ const Header: React.FC<{}> = ({}) => {
             </Link>
           ))}
           <Link href="/login">
-            <a className="rounded-full p-2 px-6 bg-wpurple">Login</a>
+            <a className="rounded-full p-2 px-6 bg-wpurple hover:bg-wpurpledarker">
+              Login
+            </a>
           </Link>
         </nav>
       </div>
@@ -88,15 +94,32 @@ const Footer: React.FC<{}> = () => {
   return (
     <footer className=" border-t border-gray-900">
       <div className="container mx-auto py-8 text-center">
-        <Image src={logo} alt="WeCode" />
+        <Image src={logo} alt="WeCode" height={36} width={134} />
         <div className="grid grid-flow-col justify-center gap-4 mt-4">
           <Link href="https://instagram.com/wecode.oficial">
-            <a className="block h-8 w-8" target="_blank" rel="noopener">
-              <Image src={instagram} alt="Instagram" layout="responsive" />
+            <a
+              target="_blank"
+              rel="noopener"
+              className="text-white hover:text-wgreen"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="h-8 w-8"
+              >
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+              </svg>
             </a>
           </Link>
           <Link href="mailto:contato@wecode.so">
-            <a>
+            <a className="text-white hover:text-wgreen">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-8 w-8"
