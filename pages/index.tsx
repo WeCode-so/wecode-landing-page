@@ -70,11 +70,6 @@ const Home: NextPage = () => {
 };
 
 const HeaderCircle = () => {
-  const scrollY = useScrollY();
-  const viewport = useViewportHeight();
-
-  const completeness = scrollY / viewport / 1.5;
-
   return (
     <section className="header-section -mt-24">
       <div className="inner">
@@ -119,8 +114,6 @@ const HeaderCircle = () => {
 
         .header {
           background: rgba(0, 0, 0, 0.25);
-          backdrop-filter: saturate(${180 * completeness}%)
-            blur(${10 * completeness}px);
         }
       `}</style>
     </section>
