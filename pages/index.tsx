@@ -2,24 +2,22 @@ import type { NextPage } from "next";
 import Link from "next/link";
 import Head from "next/head";
 import CommonLayout from "../components/CommonLayout";
-import Image from "next/image";
-import teamImage from "../public/team.svg";
-import {
-  transform,
-  useMotionValue,
-  useTransform,
-  useViewportScroll,
-} from "framer-motion";
-import React, { useEffect } from "react";
+import React from "react";
 import CircleCanvas from "../components/CircleCanvas";
-import { useScrollY, useViewportHeight } from "../lib/util";
 import NoSSR from "../components/NoSSR";
+import dynamic from "next/dynamic";
+
+const Typewriter = dynamic(() => import("typewriter-effect"), {
+  ssr: false,
+});
 
 const Home: NextPage = () => {
   return (
     <CommonLayout noCircle>
       <Head>
-        <title>WeCode: Construíremos juntos.</title>
+        <title>
+          WeCode | Descubra o mundo da tecnologia com as suas próprias mãos
+        </title>
         <link rel="shortcut icon" href="/favicon.png" />
       </Head>
       <main>
@@ -28,7 +26,7 @@ const Home: NextPage = () => {
         {/* Cursos */}
         <section className="container mx-auto py-24 text-center flex flex-col items-center px-4 mt-8">
           <h2 className="text-4xl font-medium">
-            Quais <span className="text-wgreen">cursos</span> oferecemos? 🤔
+            <span className="text-wgreen">Aprenda</span> com nossos cursos 💪
           </h2>
           <div className="grid grid-cols-3 w-full mt-8 gap-8">
             <div className="border p-2 py-6 rounded-md border-gray-600 bg-gray-900 text-xl">
@@ -48,10 +46,10 @@ const Home: NextPage = () => {
         {/* Clubes */}
         <section className="container mx-auto py-24 text-center flex flex-col items-center px-4 mt-8">
           <h2 className="text-4xl font-medium">
-            Crie um <span className="text-wgreen">clube</span> e faça amigos 🤟
+            <span className="text-wgreen">Crie</span> um clube e faça amigos 🤟
           </h2>
           <span className="mt-8">
-            <Image src={teamImage} alt="" />
+            <img src="/clube-power.png" alt="" className="h-96" />
           </span>
           <p className="text-2xl max-w-4xl block text-center mt-12">
             Aprenda programação com os cursos WeCode, junte amigos e crie um
@@ -59,9 +57,7 @@ const Home: NextPage = () => {
             hackathons e maratonas com premiações exclusivas.
           </p>
           <Link href="/aprenda">
-            <a className="py-4 px-8 bg-wpurple hover:bg-wpurpledarker rounded-full text-xl mt-10 font-medium">
-              Crie um clube agora ➡️
-            </a>
+            <a className="btn-primary btn-lg mt-12">Crie um clube agora 🤙</a>
           </Link>
         </section>
       </main>
@@ -71,30 +67,43 @@ const Home: NextPage = () => {
 
 const HeaderCircle = () => {
   return (
-    <section className="header-section -mt-24">
+    <section className="header-section -mt-24 bg-gradient-to-b from-gray-900 to-black">
       <div className="inner">
         <div className="absolute top-0 left-0 w-full h-screen z-10">
           <NoSSR>
             <CircleCanvas />
           </NoSSR>
         </div>
-        <div className="absolute top-0 left-0 w-full h-screen z-20 flex items-center justify-center header">
+        <img
+          src="/hero-radial.png"
+          alt=""
+          className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-11/12"
+        />
+        <div className="absolute top-0 left-0 w-full h-screen z-30 flex items-center justify-center header">
           <section className="container text-center flex flex-col items-center px-4">
-            <h1 className="text-5xl font-medium">
+            <img src="/code-hero.png" alt="" className="h-64" />
+
+            <h1 className="text-6xl font-medium">
               <span className="text-wgreen">WeCode</span>{" "}
-              <span className="italic">juntos.</span>
+              <span className="italic inline-block">
+                <Typewriter
+                  onInit={() => {}}
+                  options={{
+                    strings: ["juntos.", "agora.", "onde quiser."],
+                    autoStart: true,
+                    loop: true,
+                    cursor: "_",
+                  }}
+                />
+              </span>
             </h1>
-            <p className="text-3xl mt-6">A qualquer hora. Em qualquer lugar.</p>
-            <div className="w-24 h-2 bg-wred mt-8" />
+
             <p className="text-2xl max-w-3xl block text-center mt-8">
-              Aprenda programação e UX/UI design com cursos gratuitos baseados
-              em projetos, crie seu clube, e ganhe premiações em hackathons e
-              maratonas!
+              Descubra o mundo da programação e do UX/UI design com&nbsp;as suas
+              próprias mãos
             </p>
             <Link href="/aprenda">
-              <a className="py-3 px-8 bg-wpurple hover:bg-wpurpledarker rounded-full text-xl mt-8 font-medium">
-                Saiba mais ➡️
-              </a>
+              <a className="btn-primary btn-lg mt-8">Dá uma olhada 👇</a>
             </Link>
           </section>
         </div>
@@ -113,7 +122,7 @@ const HeaderCircle = () => {
         }
 
         .header {
-          background: rgba(0, 0, 0, 0.25);
+          background: rgba(0, 0, 0, 0.5);
         }
       `}</style>
     </section>

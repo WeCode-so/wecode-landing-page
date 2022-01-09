@@ -11,3 +11,21 @@
     @apply bg-black text-white;
   }
 }
+
+@layer components {
+  .btn-primary {
+    @apply bg-transparent filter backdrop-blur-md border border-wpurple hover:bg-wpurple transition rounded-full font-medium hover:transform hover:scale-105;
+  }
+
+  .btn-secondary {
+    @apply bg-transparent filter backdrop-blur-md border border-zinc-800 hover:bg-wgreen hover:text-black transition rounded-full font-medium hover:transform hover:scale-105;
+  }
+
+  .btn-lg {
+    @apply py-3 px-8 text-xl;
+  }
+
+  .btn-md {
+    @apply p-2 px-6;
+  }
+}
