@@ -11,10 +11,10 @@ const CircleCanvas: React.FC<{}> = () => {
 
   loop.current = function () {
     if (canvas.current) {
-      const completeness = window.scrollY / window.innerHeight / 1.5;
+      const completeness = window.scrollY / window.innerHeight / 1;
       const ctx = (canvas.current as HTMLCanvasElement).getContext("2d");
       if (ctx) {
-        drawFrame(ctx, completeness > 1 ? 1 : completeness);
+        drawFrame(ctx, completeness);
       }
     }
 
@@ -59,7 +59,7 @@ const drawFrame = (ctx: CanvasRenderingContext2D, c: number) => {
 
   const radius = 256;
 
-  for (let i = 0.2; i < 2; i += 0.15) {
+  for (let i = 0.2; i < 1.7; i += 0.15) {
     drawTxtArc(ctx, targetText.substring((i / 0.15) * 120), radius, i, c);
   }
 };

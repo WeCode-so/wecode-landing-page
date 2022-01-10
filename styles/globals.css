@@ -7,8 +7,12 @@
     @apply font-mono;
   }
 
+  html {
+    @apply scroll-smooth;
+  }
+
   body {
-    @apply bg-black text-white;
+    @apply bg-black text-white overflow-x-hidden;
   }
 }
 

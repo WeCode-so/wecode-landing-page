@@ -66,8 +66,10 @@ const Header: React.FC<{}> = ({}) => {
             <Link key={l.href} href={l.href}>
               <a
                 className={
-                  "font-medium hover:text-wgreen " +
-                  (l.href === pathname ? "text-wgreen" : "text-white")
+                  "font-medium hover:text-wgreen hover:opacity-100 " +
+                  (l.href === pathname
+                    ? "text-wgreen"
+                    : "text-white opacity-60")
                 }
               >
                 {l.label}
@@ -75,7 +77,7 @@ const Header: React.FC<{}> = ({}) => {
             </Link>
           ))}
           <Link href="/login">
-            <a className="btn-secondary btn-md">Login</a>
+            <a className="btn-secondary btn-md">🔑 Login</a>
           </Link>
         </nav>
       </div>
@@ -131,6 +133,10 @@ const Footer: React.FC<{}> = () => {
             </a>
           </Link>
         </div>
+        <div className="grid grid-flow-col justify-center gap-4 mt-4"></div>
+        <p className="text-zinc-500 mt-8">
+          Feito com 💚 e Coca-Cola, ao som de Lorde, por Luísa e Kayky
+        </p>
       </div>
     </footer>
   );
