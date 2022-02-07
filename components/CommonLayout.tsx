@@ -3,7 +3,6 @@ import { useScrolled } from "../lib/util";
 import Image from "next/image";
 import Link from "next/link";
 import logo from "../public/wecode.png";
-import instagram from "../public/instagram.svg";
 import purpleBall from "../public/big_purple_ball.png";
 import { useRouter } from "next/dist/client/router";
 
@@ -30,16 +29,12 @@ const HEADER_LINKS = [
     href: "/",
   },
   {
-    label: "Sobre nós",
+    label: "Quem somos",
     href: "/sobre",
   },
   {
-    label: "Aprenda",
-    href: "/aprenda",
-  },
-  {
-    label: "Contato",
-    href: "/contato",
+    label: "Blog",
+    href: "/blog",
   },
 ];
 
@@ -50,7 +45,7 @@ const Header: React.FC<{}> = ({}) => {
   return (
     <div
       className={
-        "h-24 sticky top-0 z-30 border-b border-white border-opacity-0 px-4 " +
+        "h-24 sticky top-0 z-50 border-b border-white border-opacity-0 px-4 " +
         (scrolled ? "header border-opacity-10" : "")
       }
     >
@@ -77,13 +72,13 @@ const Header: React.FC<{}> = ({}) => {
             </Link>
           ))}
           <Link href="/login">
-            <a className="btn-secondary btn-md">🔑 Login</a>
+            <a className="btn-secondary btn-md">👋 Começar</a>
           </Link>
         </nav>
       </div>
       <style jsx>{`
         .header {
-          backdrop-filter: saturate(180%) blur(10px);
+          backdrop-filter: blur(10px);
         }
       `}</style>
     </div>
@@ -129,6 +124,28 @@ const Footer: React.FC<{}> = () => {
               >
                 <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
                 <polyline points="22,6 12,13 2,6"></polyline>
+              </svg>
+            </a>
+          </Link>
+          <Link href="https://www.linkedin.com/company/wecode-edu/?viewAsMember=true">
+            <a
+              className="text-white hover:text-wgreen"
+              target="_blank"
+              rel="noopener"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="h-8 w-8"
+              >
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                <rect x="2" y="9" width="4" height="12"></rect>
+                <circle cx="4" cy="4" r="2"></circle>
               </svg>
             </a>
           </Link>
